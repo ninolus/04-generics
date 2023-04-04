@@ -50,10 +50,10 @@ public class SimpleListTests {
 	@Test
 	void testFilterAnonymousClass(){
 		logger.info("Testing the filter possibilities by filtering for all elements greater 2");
-		SimpleList<Integer> result = testList.filter(new SimpleFilter<Integer>() {
+		SimpleList<Integer> result = testList.filter(new SimpleFilter<>() {
 			@Override
 			public boolean include(Integer item) {
-				int current = (int)item;
+				int current = item;
 				return current > 2;
 			}
 		});
@@ -67,10 +67,9 @@ public class SimpleListTests {
 	@Test
 	void testFilterLambda(){
 		logger.info("Testing the filter possibilities by filtering for all elements which are dividable by 2");
-		SimpleList<Integer> result = testList.filter(o -> ((int) o) % 2 == 0);
-		for(Object o : result){
-			int i = (int)o;
-			assertTrue(i % 2 == 0);
+		SimpleList<Integer> result = testList.filter(o -> o % 2 == 0);
+		for(int o : result){
+			assertTrue(o % 2 == 0);
 		}
 	}
 }

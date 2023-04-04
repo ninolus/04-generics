@@ -23,14 +23,14 @@ public class SimpleListImpl<T> implements SimpleList<T> {
     public void add(T item) {
         /* special case empty list */
         if (head == null) {
-            head = new ListElement<T>(item);
+            head = new ListElement<>(item);
         } else {
             /* any other list length */
             ListElement<T> current = head;
             while (current.getNext() != null) {
                 current = current.getNext();
             }
-            current.setNext(new ListElement<T>(item));
+            current.setNext(new ListElement<>(item));
         }
         size++;
     }
@@ -48,7 +48,7 @@ public class SimpleListImpl<T> implements SimpleList<T> {
      * @param filter SimpleFilter instance
      * @return new SimpleList instance
      */
-    public SimpleList<T> filter(SimpleFilter<T> filter) { // todo???
+    public SimpleList<T> filter(SimpleFilter<T> filter) {
         SimpleList<T> result = new SimpleListImpl<>();
         for (T o : this) {
             if (filter.include(o)) {
